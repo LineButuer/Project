@@ -6,7 +6,7 @@ public class BookService {
     Scanner scanner = new Scanner(System.in);
     BookRepository bookRepository = new BookRepository();
 
-    public void save(){
+    public void save() {
         System.out.println("책제목 입력");
         String bookTitle = scanner.next();
         System.out.println("저자 입력");
@@ -19,20 +19,24 @@ public class BookService {
         String bookKeyWord2 = scanner.next();
         System.out.println("세 번째 키워드 입력");
         String bookKeyWord3 = scanner.next();
-        BookDTO bookDTO = new BookDTO(bookTitle, bookContents, bookContents,bookKeyWord,bookKeyWord2,bookKeyWord3);
+        BookDTO bookDTO = new BookDTO(bookTitle, bookContents, bookContents, bookKeyWord, bookKeyWord2, bookKeyWord3);
         boolean result = bookRepository.save(bookDTO);
-        if(result){
+        if (result) {
             System.out.println("저장 성공");
-        }else {
+        } else {
             System.out.println("저장 실패");
         }
     }
-    public void search(){
+
+    public void search() {
         System.out.println("책을 검색하세요");
-    String q = scanner.next();
-    BookDTO bookDTO =bookRepository.search(q);
-    if (bookDTO!=null){
-        System.out.println("bookDTO = " + bookDTO);
-    }
+        String q = scanner.next();
+        BookDTO bookDTO = bookRepository.search(q);
+        if (bookDTO != null) {
+            System.out.println("안녕");
+            System.out.println("bookDTO = " + bookDTO);
+        } else {
+            System.out.println("불러오는데 실패했씁니다");
+        }
     }
 }
