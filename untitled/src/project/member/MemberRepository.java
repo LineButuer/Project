@@ -7,11 +7,12 @@ public class MemberRepository {
     List<MemberDTO>memberDTOList = new ArrayList<>();
 
     public boolean idCheck(String id){
+        boolean result =false;
         for(MemberDTO memberDTO : memberDTOList){
             if(id.equals(memberDTO.getMemberId())){
-               return false;
+               result =true;
             }
-        } return true;
+        }return result;
     }
     public boolean signUp(MemberDTO memberDTO){
         return memberDTOList.add(memberDTO);

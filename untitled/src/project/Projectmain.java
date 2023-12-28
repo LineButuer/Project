@@ -12,7 +12,6 @@ public class Projectmain {
     public static void main(String[] args) {
         BookService bookService = new BookService();
         MemberService memberService = new MemberService();
-        CommonVariables loginId = new CommonVariables();
         Scanner scanner = new Scanner(System.in);
         boolean run = true;
         while (run) {
@@ -44,13 +43,12 @@ public class Projectmain {
                 memberService.logIn();
             } else if (select == 4) {
                 boolean run2 = true;
-                int select2 = scanner.nextInt();
                 while (run2) {
-                    if (select2 == 3) {
-                        if (loginId != null) {
-                            System.out.println("1.글작성 2.글수정 3.글삭제");
-                        } else {
-                            System.out.println("로그인이 필요합니다.");
+                    System.out.println("1.글쓰기 2.글목록 3.인기글 4.검색");
+                    int select2 = scanner.nextInt();
+                    if(select2==1){
+                        if(CommonVariables.loginId!=null){
+                            // 게시글 글쓰기 기능
                         }
                     }
                 }
