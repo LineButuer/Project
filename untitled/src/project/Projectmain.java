@@ -69,7 +69,7 @@ public class Projectmain {
                         communityService.hottest();
 
                     } else if (select2 == 5) {
-                        communityService.comList();
+                        communityService.search();
 
                     } else if (select2 == 6) {
                         run2 = false;
@@ -77,6 +77,8 @@ public class Projectmain {
                 }
             } else if (select == 5) {
                 memberService.logOut();
+            } else if (select==6) {
+                run = false;
             }
         }
     }

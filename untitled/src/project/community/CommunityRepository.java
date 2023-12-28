@@ -5,6 +5,16 @@ import java.util.List;
 
 public class CommunityRepository {
     List<CommunityDTO> communityDTOList = new ArrayList<>();
+    public boolean updateHits(Long id){
+        for(CommunityDTO communityDTO : communityDTOList){
+            if(id.equals(communityDTO.getId())){
+                int hits = communityDTO.getComHits();
+                hits += 1;
+                communityDTO.setComHits(hits);
+                return true;
+            }
+        }return false;
+    }
 
     public boolean save(CommunityDTO communityDTO) {
         return communityDTOList.add(communityDTO);
