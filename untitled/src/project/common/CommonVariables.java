@@ -2,4 +2,5 @@ package project.common;
 
 public class CommonVariables {
     public static String loginId = null;
+    public static String loginNicname = null;
 }

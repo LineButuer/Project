@@ -5,6 +5,19 @@ public class MemberDTO {
     private String memberId;
     private String memberPassWord;
     private String company;
+    private String nickName;
+
+    public MemberDTO(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
 
     public Long getId() {
         return id;
@@ -40,11 +53,12 @@ public class MemberDTO {
 
     private static Long idValue = 1L;
 
-    public MemberDTO(String memberId, String memberPassWord, String company) {
+    public MemberDTO(String memberId, String memberPassWord, String company, String nickName) {
         this.id = idValue++;
         this.memberId = memberId;
         this.memberPassWord = memberPassWord;
         this.company = company;
+        this.nickName = nickName;
     }
 
     @Override
@@ -54,6 +68,7 @@ public class MemberDTO {
                 ", memberId='" + memberId + '\'' +
                 ", memberPassWord='" + memberPassWord + '\'' +
                 ", company='" + company + '\'' +
+                ", nickName='" + nickName + '\'' +
                 '}';
     }
 }

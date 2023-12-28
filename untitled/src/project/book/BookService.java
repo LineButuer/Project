@@ -8,6 +8,7 @@ public class BookService {
     BookRepository bookRepository = new BookRepository();
 
     public void save() {
+        System.out.println("*책저장*");
         System.out.println("책제목 입력");
         String bookTitle = scanner.nextLine();
         System.out.println("저자 입력");
@@ -33,7 +34,8 @@ public class BookService {
         while (run) {
             input = scanner.nextLine();
             qs.add(input);
-            if (input.equals("종료")) {
+            System.out.println("종료하려면 0번을 입력하세요.");
+            if (input.equals("0")) {
                 run = false;
             }
         }

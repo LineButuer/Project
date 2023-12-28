@@ -6,13 +6,12 @@ import java.util.List;
 public class MemberRepository {
     List<MemberDTO>memberDTOList = new ArrayList<>();
 
-    public boolean idCheck(String id){
-        boolean result =false;
+    public MemberDTO idCheck(String id){
         for(MemberDTO memberDTO : memberDTOList){
             if(id.equals(memberDTO.getMemberId())){
-               result =true;
+                return memberDTO;
             }
-        }return result;
+        }return null;
     }
     public boolean signUp(MemberDTO memberDTO){
         return memberDTOList.add(memberDTO);
