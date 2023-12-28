@@ -6,7 +6,7 @@ public class CommunityDTO {
     private Long id;
     private String contents;
     private String nickName;
-    private int comHits;
+    private int comHits = 0;
 
     public int getComHits() {
         return comHits;

@@ -30,7 +30,7 @@ public class CommunityService {
         Long id = scanner.nextLong();
         CommunityDTO communityDTO = communityRepository.findCom(id);
         if(communityDTO!=null){
-            System.out.println("글을 성공적으로 불러왔습니다.");
+            System.out.println(communityDTO + "글을 성공적으로 불러왔습니다.");
         }else {
             System.out.println("글을 블러오는데 실패했습니다.");
         }
@@ -39,7 +39,7 @@ public class CommunityService {
         System.out.println("*인기 게시물*");
     CommunityDTO communityDTO = communityRepository.hottest();
     if(communityDTO!=null){
-        System.out.println(communityDTO);
+        System.out.println(communityDTO + "인기 게시물!!");
     }
 
     }
