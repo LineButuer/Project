@@ -15,6 +15,13 @@ public class CommunityRepository {
             System.out.println(communityDTOList.get(i));
         }return true;
     }
+    public CommunityDTO findCom(Long id){
+        for (CommunityDTO communityDTO : communityDTOList){
+            if(id.equals(communityDTO.getId())){
+                return communityDTO;
+            }
+        }return null;
+    }
     public CommunityDTO hottest(){
         for(CommunityDTO communityDTO : communityDTOList){
             if(communityDTO.getComHits()>=10){

@@ -49,30 +49,33 @@ public class Projectmain {
                 boolean run2 = true;
                 while (run2) {
                     System.out.println("------------------커뮤티니-------------------");
-                    System.out.println("1.글쓰기 2.글목록 3.인기글 4.검색 5.종료");
-                                                        //인기글 조건은 조회수 10이상 넘어가는 것으로 설정
+                    System.out.println("1.글쓰기 2.글목록 3.글조회 4.인기글 5.검색 6.종료");
+                    //인기글 조건은 조회수 10이상 넘어가는 것으로 설정
 
                     int select2 = scanner.nextInt();
-                    if(select2==1){
-                        if(CommonVariables.loginId!=null){
+                    if (select2 == 1) {
+                        if (CommonVariables.loginId != null) {
                             communityService.save();
-                        }else {
+                        } else {
                             System.out.println("로그인이 필요합니다.");
                         }
-                    } else if (select2==2) {
+                    } else if (select2 == 2) {
                         communityService.comList();
 
-                    }else if (select2==3) {
+                    } else if (select2 == 3) {
+                        communityService.findCom();
+
+                    } else if (select2 == 4) {
                         communityService.hottest();
 
-                    }else if (select2==4) {
+                    } else if (select2 == 5) {
                         communityService.comList();
 
-                    } else if (select2==5) {
+                    } else if (select2 == 6) {
                         run2 = false;
                     }
                 }
-            } else if (select==5) {
+            } else if (select == 5) {
                 memberService.logOut();
             }
         }

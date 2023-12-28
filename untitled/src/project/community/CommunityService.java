@@ -24,6 +24,17 @@ public class CommunityService {
         System.out.println(" * 글목록 * ");
         boolean communityDTO = communityRepository.comList();
     }
+    public void findCom(){
+        System.out.println("*글조회*");
+        System.out.println("조회할 글 번호를 입력하세요.");
+        Long id = scanner.nextLong();
+        CommunityDTO communityDTO = communityRepository.findCom(id);
+        if(communityDTO!=null){
+            System.out.println("글을 성공적으로 불러왔습니다.");
+        }else {
+            System.out.println("글을 블러오는데 실패했습니다.");
+        }
+    }
     public void hottest(){
         System.out.println("*인기 게시물*");
     CommunityDTO communityDTO = communityRepository.hottest();
