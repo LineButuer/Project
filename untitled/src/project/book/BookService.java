@@ -1,5 +1,6 @@
 package project.book;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BookService {
@@ -8,18 +9,14 @@ public class BookService {
 
     public void save() {
         System.out.println("책제목 입력");
-        String bookTitle = scanner.next();
+        String bookTitle = scanner.nextLine();
         System.out.println("저자 입력");
-        String bookWrite = scanner.next();
+        String bookWriter = scanner.nextLine();
         System.out.println("책내용 입력");
-        String bookContents = scanner.next();
+        String bookContents = scanner.nextLine();
         System.out.println("첫 번째 키워드 입력");
-        String bookKeyWord = scanner.next();
-        System.out.println("두 번째 키워드 입력");
-        String bookKeyWord2 = scanner.next();
-        System.out.println("세 번째 키워드 입력");
-        String bookKeyWord3 = scanner.next();
-        BookDTO bookDTO = new BookDTO(bookTitle, bookContents, bookContents, bookKeyWord, bookKeyWord2, bookKeyWord3);
+        String bookKeyWord = scanner.nextLine();
+        BookDTO bookDTO = new BookDTO(bookTitle, bookWriter, bookContents, bookKeyWord);
         boolean result = bookRepository.save(bookDTO);
         if (result) {
             System.out.println("저장 성공");
@@ -30,11 +27,19 @@ public class BookService {
 
     public void search() {
         System.out.println("책을 검색하세요");
-        String q = scanner.next();
-        BookDTO bookDTO = bookRepository.search(q);
-        if (bookDTO != null) {
-            System.out.println("안녕");
-            System.out.println("bookDTO = " + bookDTO);
+        ArrayList<String> qs = new ArrayList<>();
+        boolean run = true;
+        String input = null;
+        while (run) {
+            input = scanner.nextLine();
+            qs.add(input);
+            if (input.equals("종료")) {
+                run = false;
+            }
+        }
+        boolean bookDTO = bookRepository.search(qs);
+        if (bookDTO) {
+            System.out.println("책을 불러왔습니다.");
         } else {
             System.out.println("불러오는데 실패했씁니다");
         }
