@@ -15,6 +15,13 @@ public class CommunityRepository {
             System.out.println(communityDTOList.get(i));
         }return true;
     }
+    public CommunityDTO hottest(){
+        for(CommunityDTO communityDTO : communityDTOList){
+            if(communityDTO.getComHits()>=10){
+                return communityDTO;
+            }
+        }return null;
+    }
 
 }
 

@@ -24,5 +24,13 @@ public class CommunityService {
         System.out.println(" * 글목록 * ");
         boolean communityDTO = communityRepository.comList();
     }
+    public void hottest(){
+        System.out.println("*인기 게시물*");
+    CommunityDTO communityDTO = communityRepository.hottest();
+    if(communityDTO!=null){
+        System.out.println(communityDTO);
+    }
+
+    }
 
 }
