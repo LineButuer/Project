@@ -4,9 +4,18 @@ import project.member.MemberDTO;
 
 public class CommunityDTO {
     private Long id;
+    private String title;
     private String contents;
     private String nickName;
     private int comHits = 0;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
     public int getComHits() {
         return comHits;
@@ -47,16 +56,18 @@ public class CommunityDTO {
 
     @Override
     public String toString() {
-        return "게시글[" +
+        return "CommunityDTO{" +
                 "id=" + id +
+                ", title='" + title + '\'' +
                 ", contents='" + contents + '\'' +
                 ", nickName='" + nickName + '\'' +
                 ", comHits=" + comHits +
-                ']';
+                '}';
     }
 
-    public CommunityDTO(String nickName, String contents) {
+    public CommunityDTO(String title, String nickName, String contents) {
         this.id = idVlaue++;
+        this.title = title;
         this.contents = contents;
         this.nickName = nickName;
         this.comHits = 0;

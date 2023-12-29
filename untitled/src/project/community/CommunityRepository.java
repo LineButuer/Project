@@ -5,15 +5,17 @@ import java.util.List;
 
 public class CommunityRepository {
     List<CommunityDTO> communityDTOList = new ArrayList<>();
-    public boolean updateHits(Long id){
-        for(CommunityDTO communityDTO : communityDTOList){
-            if(id.equals(communityDTO.getId())){
+
+    public boolean updateHits(Long id) {
+        for (CommunityDTO communityDTO : communityDTOList) {
+            if (id.equals(communityDTO.getId())) {
                 int hits = communityDTO.getComHits();
                 hits += 1;
                 communityDTO.setComHits(hits);
                 return true;
             }
-        }return false;
+        }
+        return false;
     }
 
     public boolean save(CommunityDTO communityDTO) {
@@ -23,24 +25,40 @@ public class CommunityRepository {
     public boolean comList() {
         for (int i = 0; i < communityDTOList.size(); i++) {
             System.out.println(communityDTOList.get(i));
-        }return true;
+        }
+        return true;
     }
-    public CommunityDTO findCom(Long id){
-        for (CommunityDTO communityDTO : communityDTOList){
-            if(id.equals(communityDTO.getId())){
-                return communityDTO;
-            }
-        }return null;
-    }
-    public CommunityDTO hottest(){
-        for(CommunityDTO communityDTO : communityDTOList){
-            if(communityDTO.getComHits()>=10){
-                return communityDTO;
-            }
-        }return null;
-    }
-    public boolean search(){
 
+    public CommunityDTO findCom(Long id) {
+        for (CommunityDTO communityDTO : communityDTOList) {
+            if (id.equals(communityDTO.getId())) {
+                return communityDTO;
+            }
+        }
+        return null;
+    }
+
+    public CommunityDTO hottest() {
+        for (CommunityDTO communityDTO : communityDTOList) {
+            if (communityDTO.getComHits() >= 10) {
+                return communityDTO;
+            }
+        }
+        return null;
+    }
+
+    public boolean search(ArrayList<String> qs) {
+        for (CommunityDTO communityDTO : communityDTOList) {
+            for (String q : qs) {
+                if (communityDTO.getTitle().contains(q)||communityDTO.getContents().contains(q) || communityDTO.getNickName().contains(q)) {
+                    for (int i = 0; i < communityDTOList.size(); i++) {
+                        System.out.println(communityDTOList.get(i));
+                    }
+                }
+                return true;
+            }
+
+        }
+        return false;
     }
 }
-
