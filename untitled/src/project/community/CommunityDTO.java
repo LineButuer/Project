@@ -57,11 +57,11 @@ public class CommunityDTO {
     @Override
     public String toString() {
         return "CommunityDTO{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", contents='" + contents + '\'' +
-                ", nickName='" + nickName + '\'' +
-                ", comHits=" + comHits +
+                "글번호=" + id +
+                ", 제목='" + title + '\'' +
+                ", 글내용='" + contents + '\'' +
+                ", 닉네임='" + nickName + '\'' +
+                ", 조회수=" + comHits +
                 '}';
     }
 

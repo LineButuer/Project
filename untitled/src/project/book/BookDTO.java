@@ -64,11 +64,11 @@ public class BookDTO {
     @Override
     public String toString() {
         return "BookDTO{" +
-                "id=" + id +
-                ", bookTitle='" + bookTitle + '\'' +
-                ", bookWriter='" + bookWriter + '\'' +
-                ", bookContents='" + bookContents + '\'' +
-                ", bookKeyWord='" + bookKeyWord + '\'' +
+                "책번호=" + id +
+                ", 책제목='" + bookTitle + '\'' +
+                ", 작가='" + bookWriter + '\'' +
+                ", 책내용='" + bookContents + '\'' +
+                ", 책 키워드='" + bookKeyWord + '\'' +
                 '}';
     }
 }

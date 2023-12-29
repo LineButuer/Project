@@ -36,9 +36,9 @@ public class ReviewDTO {
     @Override
     public String toString() {
         return "ReviewDTO{" +
-                "reviewWriter='" + reviewWriter + '\'' +
-                ", reviewContents='" + reviewContents + '\'' +
-                ", createdAt='" + createdAt + '\'' +
+                "닉네임='" + reviewWriter + '\'' +
+                ", 글내용='" + reviewContents + '\'' +
+                ", 작성시간='" + createdAt + '\'' +
                 '}';
     }
 }

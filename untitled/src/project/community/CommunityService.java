@@ -1,5 +1,6 @@
 package project.community;
 
+import project.comment.CommentService;
 import project.common.CommonVariables;
 
 import java.util.ArrayList;
@@ -8,7 +9,7 @@ import java.util.Scanner;
 public class CommunityService {
     Scanner scanner = new Scanner(System.in);
     CommunityRepository communityRepository = new CommunityRepository();
-
+    CommentService commentService =new CommentService();
     public void save() {
         System.out.println("* 글쓰기 * ");
         System.out.println("글 제목을 입력하세요");
@@ -60,6 +61,7 @@ public class CommunityService {
         while (run){
             input = scanner.nextLine();
             qs.add(input);
+
             if(input.equals(" ")){
                 run = false;
             }
@@ -67,6 +69,18 @@ public class CommunityService {
         boolean result = communityRepository.search(qs);
         if(result){
             System.out.println("게시글을 불러왔습니다.");
+            boolean run2 = true;
+            while(run2){
+                System.out.println("1.댓글 보기 2.댓글 작성 3.종료");
+                int select = scanner.nextInt();
+                if(select==1){
+                    commentService.list();
+                } else if (select==2) {
+                    commentService.save();
+                } else if (select==3) {
+                    run2 = false;
+                }
+            }
         }else {
             System.out.println("불러오는데 실패했습니다.");
         }

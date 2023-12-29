@@ -1,7 +1,5 @@
 package project.member;
 
-import project.book.BookDTO;
-import project.book.BookRepository;
 import project.common.CommonVariables;
 
 import java.util.Scanner;
@@ -15,9 +13,11 @@ public class MemberService {
         System.out.println("필수 입력란 * ");
         boolean run = true;
         String id = null;
+        String company = null;
         while (run) {
+
             System.out.println(" * 아이디를 입력해주세요.");
-            id = scanner.nextLine();
+            id = scanner.next();
             MemberDTO result = memberRepository.idCheck(id);
             if (result != null) {
                 System.out.println("중복된 아이디 입니다. 다시 입력해주세요.");
@@ -27,11 +27,24 @@ public class MemberService {
         }
         System.out.println("사용 가능한 아이디 입니다.");
         System.out.println(" * 비밀번호를 입력해주세요");
-        String password = scanner.nextLine();
-        System.out.println("다니는 회사를 입력해주세요.");
-        String company = scanner.nextLine();
+        String password = scanner.next();
+        boolean run3 = true;
+        while (run3) {
+            System.out.println("회사 정보를 입력하시겠습니까?");
+            System.out.println("1.예 2.아니오");
+            System.out.print("선택 > ");
+            int select = scanner.nextInt();
+            if (select == 1) {
+                System.out.println("다니는 회사를 입력해주세요.");
+                company = scanner.next();
+                run3 = false;
+            }else if(select==2){
+                run3 = false;
+            }
+        }
         boolean run2 = true;
         while (run2) {
+            scanner.nextLine();
             System.out.println("닉네임을 적어주세요.");
             String nickName = scanner.nextLine();
             MemberDTO result2 = memberRepository.nickNameCheck(nickName);
@@ -63,6 +76,7 @@ public class MemberService {
             System.out.println("로그인 성공");
             CommonVariables.loginId = id;
             CommonVariables.loginNickname = result.getNickName();
+            CommonVariables.loginCompany = result.getCompany();
         } else {
             System.out.println("로그인 실패");
         }
@@ -87,11 +101,11 @@ public class MemberService {
                 } else {
                     System.out.println("사용가능한 닉네임입니다..");
                     boolean result2 = memberRepository.editNickName(nickname);
-                    if(result2){
+                    if (result2) {
                         System.out.println("성공적으로 변경되었습니다.");
-                        CommonVariables.loginNickname=nickname;
+                        CommonVariables.loginNickname = nickname;
                         run = false;
-                    }else {
+                    } else {
                         System.out.println("변경에 실패했습니다.");
                     }
                 }
@@ -106,9 +120,9 @@ public class MemberService {
             String company = scanner.nextLine();
             scanner.nextLine();
             boolean result = memberRepository.editCompany(company);
-            if(result){
+            if (result) {
                 System.out.println("성공적으로 변경되었습니다.");
-            }else {
+            } else {
                 System.out.println("변경에 실패했습니다.");
             }
 
