@@ -11,22 +11,20 @@ public class BookRepository {
 
     }
 
-    public boolean search(ArrayList<String> qs) {
+    public List<BookDTO> search(ArrayList<String> qs) {
+        List<BookDTO>bookDTOList1 =new ArrayList<>();
+        System.out.println(qs);
         for (BookDTO bookDTO : bookDTOList) {
             for (String q : qs) {
                 if (bookDTO.getBookTitle().contains(q) || bookDTO.getBookContents().contains(q) || bookDTO.getBookKeyWord().contains(q) || bookDTO.getBookWriter().contains(q)) {
-                    for (int i = 0; i < bookDTOList.size(); i++) {
-                        System.out.println(bookDTOList.get(i));
-
-
-                    }
+                    bookDTOList1.add(bookDTO);
+                    System.out.println(bookDTOList1);
                 }
-                return true;
 
             }
 
-        }
-        return false;
+        }return bookDTOList1;
+
     }
 
     public BookDTO editContents(Long id, String contents) {
@@ -48,13 +46,15 @@ public class BookRepository {
         }
         return false;
     }
-    public BookDTO delete(Long id){
-        for (BookDTO bookDTO : bookDTOList){
-            if(id.equals(bookDTO.getId())){
+
+    public BookDTO delete(Long id) {
+        for (BookDTO bookDTO : bookDTOList) {
+            if (id.equals(bookDTO.getId())) {
                 bookDTOList.remove(bookDTO);
                 return bookDTO;
             }
-        }return null;
+        }
+        return null;
     }
 
 

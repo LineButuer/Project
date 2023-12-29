@@ -6,6 +6,7 @@ import project.member.MemberDTO;
 import project.review.ReviewService;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class BookService {
@@ -74,15 +75,15 @@ public class BookService {
         boolean run = true;
         String input = null;
         while (run) {
-            input = scanner.nextLine();
+            input = scanner.next();
             qs.add(input);
             System.out.println("종료하려면 0번을 입력하세요.");
             if (input.equals("0")) {
                 run = false;
             }
         }
-        boolean bookDTO = bookRepository.search(qs);
-        if (bookDTO) {
+        List<BookDTO> bookDTO = bookRepository.search(qs);
+        if (bookDTO!=null) {
             System.out.println("책을 불러왔습니다.");
             boolean run2 = true;
             while (run2) {
