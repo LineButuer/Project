@@ -15,7 +15,7 @@ public class CommunityService {
         String title = scanner.nextLine();
         System.out.println("글을 입력하세요");
         String contents = scanner.nextLine();
-        CommunityDTO communityDTO = new CommunityDTO(title, CommonVariables.loginNicname ,contents);
+        CommunityDTO communityDTO = new CommunityDTO(title, CommonVariables.loginNickname ,contents);
         boolean result = communityRepository.save(communityDTO);
         if (result) {
             System.out.println("저장되었습니다.");

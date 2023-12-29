@@ -31,14 +31,12 @@ public class Projectmain {
                     int select2 = scanner.nextInt();
                     if (select2 == 1) {
                         bookService.save();
-                        System.out.println("계속 저장 하시겠습니까?");
-                        System.out.println("1.yes 2.no");
-                        int select3 = scanner.nextInt();
-                        if (select3 == 2) {
-                            run2 = false;
-                        } else {
-                            run2 = true;
-                        }
+                    } else if (select2 == 2) {
+                        bookService.edit();
+                    } else if (select2 == 3) {
+                        bookService.delete();
+                    } else if (select2 == 4) {
+                        run2 =false;
                     }
                 }
             } else if (select == 2) {

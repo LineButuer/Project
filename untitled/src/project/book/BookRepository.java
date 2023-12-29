@@ -20,11 +20,42 @@ public class BookRepository {
 
 
                     }
-                } return true;
+                }
+                return true;
 
             }
 
-        }return false;
+        }
+        return false;
     }
+
+    public BookDTO editContents(Long id, String contents) {
+        for (BookDTO bookDTO : bookDTOList) {
+            if (id.equals(bookDTO.getId())) {
+                bookDTO.setBookContents(contents);
+                return bookDTO;
+            }
+        }
+        return null;
+    }
+
+    public boolean editTitle(Long id, String title) {
+        for (BookDTO bookDTO : bookDTOList) {
+            if (id.equals(bookDTO.getId())) {
+                bookDTO.setBookTitle(title);
+                return true;
+            }
+        }
+        return false;
+    }
+    public BookDTO delete(Long id){
+        for (BookDTO bookDTO : bookDTOList){
+            if(id.equals(bookDTO.getId())){
+                bookDTOList.remove(bookDTO);
+                return bookDTO;
+            }
+        }return null;
+    }
+
 
 }

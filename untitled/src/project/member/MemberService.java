@@ -62,7 +62,7 @@ public class MemberService {
         if (result != null) {
             System.out.println("로그인 성공");
             CommonVariables.loginId = id;
-            CommonVariables.loginNicname = result.getNickName();
+            CommonVariables.loginNickname = result.getNickName();
         } else {
             System.out.println("로그인 실패");
         }
@@ -80,6 +80,7 @@ public class MemberService {
             while (run) {
                 System.out.println("수정하실 닉네임을 적어주세요.");
                 String nickname = scanner.nextLine();
+                scanner.nextLine();
                 MemberDTO result = memberRepository.nickNameCheck(nickname);
                 if (result != null) {
                     System.out.println("닉네임이 중복되었습니다. 다시 입력해주세요.");
@@ -88,6 +89,7 @@ public class MemberService {
                     boolean result2 = memberRepository.editNickName(nickname);
                     if(result2){
                         System.out.println("성공적으로 변경되었습니다.");
+                        CommonVariables.loginNickname=nickname;
                         run = false;
                     }else {
                         System.out.println("변경에 실패했습니다.");
@@ -100,9 +102,9 @@ public class MemberService {
     public void editCompany() {
         if (CommonVariables.loginId != null) {
             System.out.println("*회사 수정*");
-            boolean run = true;
             System.out.println("수정하실 회사명을 적어주세요.");
             String company = scanner.nextLine();
+            scanner.nextLine();
             boolean result = memberRepository.editCompany(company);
             if(result){
                 System.out.println("성공적으로 변경되었습니다.");

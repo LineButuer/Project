@@ -11,7 +11,7 @@ public class ReviewService {
     public void save() {
         System.out.println("글작성");
         String contents = scanner.nextLine();
-        ReviewDTO reviewDTO = new ReviewDTO(CommonVariables.loginNicname, contents);
+        ReviewDTO reviewDTO = new ReviewDTO(CommonVariables.loginNickname, contents);
         boolean result = reviewRepository.save(reviewDTO);
         if (result) {
             System.out.println("글작성에 성공했습니다.");
