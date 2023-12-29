@@ -4,6 +4,7 @@ import project.comment.CommentService;
 import project.common.CommonVariables;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class CommunityService {
@@ -59,19 +60,21 @@ public class CommunityService {
         boolean run =true;
         String input = null;
         while (run){
-            input = scanner.nextLine();
-            qs.add(input);
-
-            if(input.equals(" ")){
+            input = scanner.next();
+            System.out.println("검색을 마치시려면 0을 눌러주세요.");
+            if(input.equals("0")){
                 run = false;
+            }else {
+                qs.add(input);
             }
         }
-        boolean result = communityRepository.search(qs);
-        if(result){
+        List<CommunityDTO> result = communityRepository.search(qs);
+        if(result!=null){
             System.out.println("게시글을 불러왔습니다.");
             boolean run2 = true;
             while(run2){
                 System.out.println("1.댓글 보기 2.댓글 작성 3.종료");
+                System.out.print("선택 > ");
                 int select = scanner.nextInt();
                 if(select==1){
                     commentService.list();

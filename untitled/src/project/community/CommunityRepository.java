@@ -47,18 +47,20 @@ public class CommunityRepository {
         return null;
     }
 
-    public boolean search(ArrayList<String> qs) {
+    public List<CommunityDTO> search(ArrayList<String> qs) {
+        List<CommunityDTO> communityDTOList1 = new ArrayList<>();
+        System.out.println(qs);
         for (CommunityDTO communityDTO : communityDTOList) {
             for (String q : qs) {
                 if (communityDTO.getTitle().contains(q)||communityDTO.getContents().contains(q) || communityDTO.getNickName().contains(q)) {
-                    for (int i = 0; i < communityDTOList.size(); i++) {
-                        System.out.println(communityDTOList.get(i));
-                    }
+                        communityDTOList1.add(communityDTO);
+                    System.out.println(communityDTOList1);
+//
                 }
-                return true;
+
             }
 
-        }
-        return false;
+        }return communityDTOList1;
+
     }
 }
