@@ -78,13 +78,17 @@ public class Projectmain {
                 }
             } else if (select == 5) {
                 System.out.println("*회원정보 수정*");
-                System.out.println("1.닉네임 변경 2.회사 변경");
-                int s = scanner.nextInt();
-                if(s==1){
-                    memberService.editNickName();
-                }
-                if(s==2) {
-                    memberService.editCompany();
+                boolean run2 = true;
+                while (run2) {
+                    System.out.println("1.닉네임 변경 2.회사 변경 3.종료");
+                    int s = scanner.nextInt();
+                    if (s == 1) {
+                        memberService.editNickName();
+                    } else if (s == 2) {
+                        memberService.editCompany();
+                    } else if (s == 3) {
+                        run2 = false;
+                    }
                 }
             } else if (select == 6) {
                 memberService.logOut();

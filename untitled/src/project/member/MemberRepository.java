@@ -44,5 +44,11 @@ public class MemberRepository {
         }
         return false;
     }
+    public boolean editCompany(String company){
+        for (MemberDTO memberDTO : memberDTOList){
+            memberDTO.setCompany(company);
+            return true;
+        }return false;
+    }
 
 }

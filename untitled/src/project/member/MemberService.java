@@ -85,7 +85,13 @@ public class MemberService {
                     System.out.println("닉네임이 중복되었습니다. 다시 입력해주세요.");
                 } else {
                     System.out.println("사용가능한 닉네임입니다..");
-                    run = false;
+                    boolean result2 = memberRepository.editNickName(nickname);
+                    if(result2){
+                        System.out.println("성공적으로 변경되었습니다.");
+                        run = false;
+                    }else {
+                        System.out.println("변경에 실패했습니다.");
+                    }
                 }
             }
         }
@@ -97,6 +103,12 @@ public class MemberService {
             boolean run = true;
             System.out.println("수정하실 회사명을 적어주세요.");
             String company = scanner.nextLine();
+            boolean result = memberRepository.editCompany(company);
+            if(result){
+                System.out.println("성공적으로 변경되었습니다.");
+            }else {
+                System.out.println("변경에 실패했습니다.");
+            }
 
         }
     }
