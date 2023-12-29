@@ -24,6 +24,7 @@ public class Projectmain {
                 bookService.search();
                 // 책 검색 했을 때 리뷰 게시판 나오면 좋을 것
             } else if (select == 14) {
+                //관리자 tap
                 boolean run2 = true;
                 while (run2) {
                     System.out.println("1.책저장 2.책수정 3.책삭제 4.종료");
