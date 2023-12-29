@@ -24,8 +24,6 @@ public class CommunityService {
             System.out.println("저장되지 않았습니다.");
         }
     }
-
-
     public void comList() {
         System.out.println(" * 글목록 * ");
         boolean communityDTO = communityRepository.comList();
