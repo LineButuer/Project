@@ -39,6 +39,8 @@ public class CommunityRepository {
             }
         }return null;
     }
+    public boolean search(){
 
+    }
 }
 

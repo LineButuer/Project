@@ -64,6 +64,12 @@ public class CommunityService {
                 run = false;
             }
         }
+        boolean result = communityRepository.search(qs);
+        if(result){
+            System.out.println("게시글을 불러왔습니다.");
+        }else {
+            System.out.println("불러오는데 실패했습니다.");
+        }
     }
 
 }
