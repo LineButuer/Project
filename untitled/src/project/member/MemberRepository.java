@@ -13,6 +13,13 @@ public class MemberRepository {
             }
         }return null;
     }
+    public MemberDTO nickNameCheck(String nickname){
+        for(MemberDTO memberDTO : memberDTOList){
+            if(nickname.equals(memberDTO.getNickName())){
+                return memberDTO;
+            }
+        }return null;
+    }
     public boolean signUp(MemberDTO memberDTO){
         return memberDTOList.add(memberDTO);
     }

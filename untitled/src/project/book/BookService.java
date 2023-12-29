@@ -1,6 +1,7 @@
 package project.book;
 
 
+import project.common.CommonVariables;
 import project.review.ReviewService;
 
 import java.util.ArrayList;
@@ -46,16 +47,26 @@ public class BookService {
         boolean bookDTO = bookRepository.search(qs);
         if (bookDTO) {
             System.out.println("책을 불러왔습니다.");
-            System.out.println("1.리뷰 보기 2.리뷰 작성");
-            System.out.print("선택 > ");
-            int select = scanner.nextInt();
-            if (select == 2) {
-                reviewService.save();
-            } else if (select == 1) {
-                reviewService.list();
+            boolean run2 =true;
+            while (run2) {
+                System.out.println("1.리뷰 보기 2.리뷰 작성 3.종료");
+                System.out.print("선택 > ");
+                int select = scanner.nextInt();
+                if (select == 2) {
+                    if(CommonVariables.loginId!=null) {
+                        reviewService.save();
+                    }else {
+                        System.out.println("로그인이 필요한 서비스 입니다.");
+                    }
+                } else if (select == 1) {
+                    reviewService.list();
+                } else if (select==3) {
+                    run2 =false;
+                    System.out.println("메인으로 돌아갑니다.");
+                }
             }
         } else {
-            System.out.println("불러오는데 실패했씁니다");
+            System.out.println("불러오는데 실패 했습니다.");
         }
     }
 }

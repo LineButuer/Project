@@ -17,7 +17,7 @@ public class Projectmain {
         Scanner scanner = new Scanner(System.in);
         boolean run = true;
         while (run) {
-            System.out.println("1.책검색 2.회원 가입 3.로그인 4.커뮤니티 5.로그아웃 6.종료");
+            System.out.println("1.책검색 2.회원 가입 3.로그인 4.커뮤니티 5.회원정보 수정 6.로그아웃 7.종료");
             int select = scanner.nextInt();
             if (select == 1) {
                 System.out.println(" * 책검색 * ");
@@ -77,8 +77,18 @@ public class Projectmain {
                     }
                 }
             } else if (select == 5) {
+                System.out.println("*회원정보 수정*");
+                System.out.println("1.닉네임 변경 2.회사 변경");
+                int s = scanner.nextInt();
+                if(s==1){
+                    memberService.editNickName();
+                }
+                if(s==2) {
+                    memberService.editCompany();
+                }
+            } else if (select == 6) {
                 memberService.logOut();
-            } else if (select==6) {
+            } else if (select == 7) {
                 run = false;
             }
         }

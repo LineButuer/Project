@@ -25,13 +25,22 @@ public class MemberService {
                 run = false;
             }
         }
-            System.out.println("사용 가능한 아이디 입니다.");
-            System.out.println(" * 비밀번호를 입력해주세요");
-            String password = scanner.nextLine();
-            System.out.println("다니는 회사를 입력해주세요.");
-            String company = scanner.nextLine();
+        System.out.println("사용 가능한 아이디 입니다.");
+        System.out.println(" * 비밀번호를 입력해주세요");
+        String password = scanner.nextLine();
+        System.out.println("다니는 회사를 입력해주세요.");
+        String company = scanner.nextLine();
+        boolean run2 = true;
+        while (run2) {
             System.out.println("닉네임을 적어주세요.");
             String nickName = scanner.nextLine();
+            MemberDTO result2 = memberRepository.nickNameCheck(nickName);
+            if (result2 != null) {
+                System.out.println("중복된 닉네임입니다. 다시 써주세요.");
+            } else {
+                System.out.println("사용하실 수 있는 닉네임입니다.");
+                run2 = false;
+            }
             MemberDTO memberDTO = new MemberDTO(id, password, company, nickName);
 
             boolean bookDTO = memberRepository.signUp(memberDTO);
@@ -41,6 +50,7 @@ public class MemberService {
                 System.out.println("회원 가입에 실패했습니다. 다시 시도해주세요");
             }
         }
+    }
 
     public void logIn() {
         System.out.println(" * 로그인 * ");
@@ -61,6 +71,27 @@ public class MemberService {
     public void logOut() {
         CommonVariables.loginId = null;
         System.out.println("로그아웃 되었습니다.");
+    }
+
+    public void editNickName() {
+        if (CommonVariables.loginId != null) {
+            System.out.println("*닉네임 수정*");
+            System.out.println("수정하실 닉네임을 적어주세요.");
+            String nickname = scanner.nextLine();
+            MemberDTO result = memberRepository.nickNameCheck(nickname);
+            boolean run = true;
+            while (run) {
+                if (result != null) {
+                    System.out.println("닉네임이 중복되었습니다. 다시 입력해주세요.");
+                } else {
+                    System.out.println("성공적으로 변경되었습니다.");
+                }
+            }
+        }
+    }
+
+    public void editCompany() {
+        System.out.println("*회사 수정*");
     }
 
 }
